@@ -19,8 +19,8 @@ export default {
 <style>
 main{
   background-image: url("@/assets/bg2.jpg");
-  height: 100%;
-  width:100%;
+  height: 100vh;
+  width:100vw;
 
   background-size: cover;
   background-repeat: no-repeat;
@@ -28,9 +28,17 @@ main{
 }
 .wrapper{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(100px, auto);
+  width: 100%;
+  height: 100%;
+  grid-template-rows: repeat(4, 100px);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+/*
+  grid-auto-rows: minmax(100px, auto); Esto se para cuando se defina automaticamente una row extra ponerle el tamano establecido por defecto  */
+  /* grid-auto-columns: minmax(100px, auto); */
+  grid-auto-rows: 100px;
   grid-gap: 25px;
+  align-content: center;
 
 }
 .container{
@@ -43,29 +51,47 @@ main{
   -webkit-backdrop-filter: blur(13.2px);
 }
 .one {
-  grid-column: 1 / 3;
-  grid-row: 1/3;
+  /* grid-column: 1 / 3;
+  grid-row: 1/3; */
 
-  background-color: #01d77ed0;
-  filter: blur(2px);
+
 
 }
+/*
 .two {
   grid-column: 3 / 4;
   grid-row: 1 / 3;
 
-}
+} */
+/* 
 .three {
   grid-column: 1 / 2;
-  grid-row: 3 / 4;
+  grid-row: 3/5;
 
 }
 .four {
   grid-column: 2;
-  grid-row: 3;
+  grid-row: 3/5;
 }
 .five {
-  grid-column: 2;
-  grid-row: 4;
+  grid-column: 3/4;
+  grid-row: 3/5;
+} */
+/* 320px, 768px, and 1200px */
+@media only screen and (min-width: 1200px){
+  .wrapper{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 200px);
+  }
+  .one {
+    background-color: #01d77ed0;
+    grid-column: span 2;
+    grid-row: 1/3;
+  }
+  .two{
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
 }
 </style>
