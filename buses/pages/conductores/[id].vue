@@ -1,9 +1,18 @@
 <script setup>
-const route = useRoute();
+import { getConductor } from "../../helpers/getConductor";
+import {ref} from "vue"
 
-const { id:conductorId } = route.params
-const { data } = await useFetch(`http://localhost:8000/api/chofers/${conductorId}/`);
-console.log("XD", data)
+const route = useRoute();
+const { id: conductorId } = route.params;
+const conductor = ref({})
+try {
+  conductor = await getConductor(conductorId).data;
+  console.log(conductor);
+} catch (err) {
+  const messageError = err.message;
+
+  console.log(messageError);
+}
 
 defineProps({
   title: {
@@ -17,8 +26,24 @@ defineProps({
 
 <template>
   <div>
-    <h2>{{ title }}</h2>
-    <p>{{ $route.params.id }}</p>
+    <h2>{{ title }} Conductor</h2>
+    <span>{{ conductor }}</span>
+    <!-- <p>{{ $route.params.id }}</p> -->
+    <form action="/signup" method="post">
+      <p>
+        <label>First name</label><br />
+        <input type="text" name="first_name" />
+      </p>
+      <p>
+        <label>Last name</label><br />
+        <input type="text" name="last_name" />
+      </p>
+
+      <p>
+        <button>Sign up</button>
+        <button type="reset">Reset form</button>
+      </p>
+    </form>
   </div>
 </template>
 

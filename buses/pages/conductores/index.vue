@@ -1,6 +1,10 @@
 <script setup>
-const { data } = await useFetch("http://localhost:8000/api/chofers");
-const conductores = data._rawValue;
+import {getConductores} from "@/helpers/getConductor"
+
+const { data:conductores } = await getConductores()
+
+// const { data } = await useFetch("http://localhost:8000/api/chofers");
+// const conductores = data._rawValue;
 
 </script>
 
