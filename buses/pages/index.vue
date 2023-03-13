@@ -1,11 +1,15 @@
 <template>
-    <div class="grid-container">
-      <div class="item one">one</div>
-      <div class="item two">two</div>
-      <div class="item three">three</div>
-      <div class="item four">four</div>
-      <div class="item five">five</div>
+  <div class="grid-container">
+    <div class="item one">one</div>
+    <div class="item two">two</div>
+    <div class="item three">three</div>
+    <div class="item four">four</div>
+    <div class="item five">
+      <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
+        <span class="text-2xl font-medium tracking-normal text-emerald-500">Conductores</span>
+      </nuxt-link>
     </div>
+  </div>
 </template>
 
 <script>
@@ -13,7 +17,6 @@ export default {};
 </script>
 
 <style>
-
 .grid-container {
   display: grid;
   width: 100%;
