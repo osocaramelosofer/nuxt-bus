@@ -1,56 +1,60 @@
 
 
-<template>
-  <div>
-    <h2>Conductor: {{ driver }} </h2>
-    <template v-if="driver">
-      <form>
-        <div class="relative mb-12" data-te-input-wrapper-init>
-          <input
-              type="text"
-              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-              id="driverName"
-              aria-describedby="emailHelp"
-              placeholder="Introduce tu nombre"
-              :value="driver.nombre"
-          />
-          <label
-              for="driverName"
-              class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
-          >Nombre</label
-          >
-          <small
-              id="emailHelp"
-              class="absolute w-full text-neutral-500 dark:text-neutral-200"
-              data-te-input-helper-ref
-          >Introduce tu nuevo nombre</small
-          >
-        </div>
-        <input type="text" v-model="name">t
-        <span>{{ driver.nombre }}</span>
-        <button
-            type="submit"
-            class="rounded bg-blue-200 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
-            data-te-ripple-init
-            data-te-ripple-color="light">
-          Submit
-        </button>
-      </form>
-    </template>
-
-
+<template v-if="driver.id">
+  <div id="overlay" onclick="off()">
+    <div id="text">Overlay Text</div>
   </div>
+
+
+  <form v-on:submit.prevent="onSubmit">
+    <div class="root">
+      <h2>Editar conductor</h2>
+      <p>
+        <input type="text" placeholder="Nombre" :value="$route.params.id" disabled class="bg-gray-50 px-2" />
+      </p>
+      <small>El id no se puede editar.</small>
+      <p>
+        <input type="text" placeholder="Nombre" v-model.trim="name"  />
+      </p>
+      <small>Este es tu nombre actual, y puedes editarlo.</small>
+      <button class="save-button">Guardar</button>
+
+    </div>
+  </form>
+
+<!--  <template>-->
+<!--    <div class="text-center">-->
+<!--      <v-btn-->
+<!--          color="error"-->
+<!--          @click="overlay = !overlay"-->
+<!--      >-->
+<!--        Show Overlay-->
+<!--      </v-btn>-->
+
+
+<!--    </div>-->
+<!--  </template>-->
 </template>
 
+
 <script>
-import { getDriver } from "@/helpers/getConductor"
+import { getDriver,updateDriver } from "@/helpers/getConductor"
+
 
 export default{
   data(){
     return{
       driver: null,
-      name: ''
+      name: '',
+      overlay: true,
     }
+  },
+  watch: {
+    overlay (val) {
+      val && setTimeout(() => {
+        this.overlay = false
+      }, 2000)
+    },
   },
   async created() {
     const { data } = await getDriver(this.$route.params.id)
@@ -58,9 +62,75 @@ export default{
     this.driver = data
     this.name = this.driver.nombre
 
+  },
+  methods:{
+    async onSubmit(){
+      const resp = await updateDriver({id: this.driver.id, nombre: this.name})
+      console.log("RESPUESTA PUT >=======()>",resp)
+    }
   }
 }
 
 </script>
-<style>
+<style lang="css" scoped>
+.root {
+  width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  margin-top: 100px;
+  border-radius: 20px;
+}
+
+input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 1em;
+  padding: 5px 0;
+  margin: 10px 0 5px 0;
+  width: 100%;
+}
+small{
+  color: #9d9d9d;
+}
+.save-button {
+  background-color: #3498db;
+  padding: 0 20px;
+  margin-top: 10px;
+  box-shadow: 0 10px #4f7da2;
+  color: #fff;
+}
+.save-button:hover {
+  box-shadow: 0 8px #3c6b7c;
+  transform: translateY(1px);
+}
+.save-button:active {
+  background-color: #376781;
+  box-shadow: 0 5px #26586e;
+  transform: translateY(4px);
+}
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
 </style>

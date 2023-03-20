@@ -8,3 +8,12 @@ export const getConductores = async () =>{
 export const getDriver = async ( id ) => {
     return await busesApi.get(`/chofers/${id}/`)
 }
+
+export const updateDriver = async ({ id, nombre } ) => {
+    return await busesApi.put(
+      `/chofers/${id}/`,
+      {
+          "nombre": nombre,
+          "id": id
+      })
+}

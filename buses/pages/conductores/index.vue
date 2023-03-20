@@ -1,10 +1,12 @@
 <template>
   <div>
     <h1 class="text-4xl  text-center">Conductores</h1>
-    <template v-if="drivers">
+    <div v-if="drivers" class="px-10">
       <DriverTable :drivers="drivers" />
-    </template>
+    </div>
     <button class="push-button">Agregar</button>
+
+
   </div>
 </template>
 
@@ -24,7 +26,6 @@ export default{
   async created(){
     const { data } = await getConductores()
     this.drivers = data
-
   },
   methods: {
 
@@ -35,10 +36,10 @@ export default{
 
 <style>
 button {
-  margin: 40px;
-  padding: 0 50px;
 
-  height: 60px;
+  padding: 0 15px;
+
+  height: 30px;
   border-radius: 15px;
   border: none;
 
@@ -47,7 +48,7 @@ button {
   transition: 0.3s ease;
 
   font-family: "Poppins", sans-serif;
-  font-size: 24px;
+  font-size: 18px;
 }
 .push-button {
   background-color: #57b894;
@@ -63,4 +64,6 @@ button {
   box-shadow: 0 5px #407762;
   transform: translateY(4px);
 }
+
+
 </style>
