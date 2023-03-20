@@ -2,10 +2,9 @@ import busesApi from "@/api/busesApi"
 
 
 export const getConductores = async () =>{
-    const res = await busesApi.get("/chofers/")
-    return res
+    return await busesApi.get("/chofers/")
 }
 
-export const getConductor = async ( id ) => {
+export const getDriver = async ( id ) => {
     return await busesApi.get(`/chofers/${id}/`)
 }

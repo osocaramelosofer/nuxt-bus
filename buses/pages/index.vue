@@ -1,12 +1,24 @@
 <template>
   <div class="grid-container">
-    <div class="item one">one</div>
+    <div class="item one">
+      <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
+        <span class="text-2xl font-bold tracking-normal text-emerald-500">Trayectos</span>
+      </nuxt-link>
+    </div>
     <div class="item two">two</div>
-    <div class="item three">three</div>
-    <div class="item four">four</div>
+    <div class="item three">
+      <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
+        <span class="text-2xl font-bold tracking-normal text-emerald-500">Pasajeros</span>
+      </nuxt-link>
+    </div>
+    <div class="item four">
+      <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
+        <span class="text-2xl font-bold tracking-normal text-emerald-500">Buses</span>
+      </nuxt-link>
+    </div>
     <div class="item five">
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
-        <span class="text-2xl font-medium tracking-normal text-emerald-500">Conductores</span>
+        <span class="text-2xl font-bold tracking-normal text-emerald-500">Conductores</span>
       </nuxt-link>
     </div>
   </div>
@@ -34,13 +46,21 @@ export default {};
 .item {
   border-radius: 10px;
 
-  background: rgba(255, 255, 255, 0.41);
-  border-radius: 16px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(13.2px);
-  -webkit-backdrop-filter: blur(13.2px);
+  backdrop-filter: blur(3.2px);
+  -webkit-backdrop-filter: blur(3.2px);
 }
-
+.item:hover{
+  /*background-color: #01d77ed0;*/
+  background-color: #01d77ed0;
+  cursor: pointer;
+  color: white;
+}
+.item:hover span{
+  color: white;
+}
 /* 320px, 768px, and 1200px */
 @media only screen and (min-width: 1200px) {
   .grid-container {
@@ -48,7 +68,6 @@ export default {};
     grid-template-rows: repeat(4, 200px);
   }
   .one {
-    background-color: #01d77ed0;
     grid-column: span 2;
     grid-row: 1/3;
   }

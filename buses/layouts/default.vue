@@ -1,8 +1,19 @@
 <template>
   <div class="father-container">
-    <nav>
-      <nuxt-link to="/">Home</nuxt-link> |
-      <nuxt-link to="/">Blog</nuxt-link>
+    <nav class="flex py-4 justify-lg-space-between px-4 items-center">
+      <div class="flex items-center">
+        <span class="text-xl font-semibold text-slate-800">Super Buses Bros</span>
+        <picture class="img-container">
+          <img class="goomba-ico" src="@/assets/goomba.png" alt="goomba" />
+        </picture>
+      </div>
+      <div>
+        <nuxt-link to="/">Home</nuxt-link>
+        <nuxt-link to="/">Blog</nuxt-link>
+      </div>
+      <div>
+        <span>X</span>
+      </div>
     </nav>
     <main class="my-2">
       <slot />
@@ -16,7 +27,8 @@
 
 <style>
 .father-container {
-  /* background-image: url("@/assets/bg2.jpg"); */
+   background-image: url("@/assets/busesbros.jpg");
+  /*background-color: #f1f1f1;*/
   height: 100vh;
   width: 100%;
 
@@ -26,12 +38,20 @@
 }
 nav{
   /* From https://css.glass */
-  background-color: #01d77ed0;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(3.2px);
--webkit-backdrop-filter: blur(3.2px);
-border: 1px solid rgba(255, 127, 0, 0.21);
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+.img-container{
+  width: 60px;
+  height: 60px;
+  display: block;
+
+}
+.goomba-ico {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
