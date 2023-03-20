@@ -3,10 +3,7 @@
 <template v-if="driver.id">
 
   <div v-if="overlay" id="overlay" @:click="overlay=false">
-    <div id="text">
-      <span>Overlay Text</span>
-      <Modal />
-    </div>
+    <Modal />
   </div>
 
   <form v-on:submit.prevent="onSubmit">

@@ -2,7 +2,10 @@
   <div class="father-container">
     <nav class="flex py-4 justify-lg-space-between px-4 items-center">
       <div class="flex items-center">
-        <span class="text-xl font-semibold text-slate-800">Super Buses Bros</span>
+<!--        <span class="text-xl font-semibold text-slate-800">Super Buses Bros</span>-->
+        <picture class="logo-container">
+          <img class="logo" src="@/assets/logo.png" alt="logo">
+        </picture>
         <picture class="img-container">
           <img class="goomba-ico" src="@/assets/goomba.png" alt="goomba" />
         </picture>
@@ -53,5 +56,16 @@ nav{
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.logo-container{
+  width: 180px;
+  height: 60px;
+  display: block;
+}
+.logo{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 </style>

@@ -67,7 +67,7 @@ export default{
   -webkit-backdrop-filter: blur(11.8px);
 }
 .edit-button {
-  background-color: rgba(236, 208, 43, 0.82);
+  background-color: rgba(243, 208, 13, 0.82);
   color: #fff;
   box-shadow: 0 10px #a28f4f;
 }
