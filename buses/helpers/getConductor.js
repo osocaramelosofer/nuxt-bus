@@ -10,10 +10,15 @@ export const getDriver = async ( id ) => {
 }
 
 export const updateDriver = async ({ id, nombre } ) => {
+  try{
     return await busesApi.put(
       `/chofers/${id}/`,
       {
-          "nombre": nombre,
-          "id": id
+        "nombre": nombre,
+        "id": id
       })
+  }catch (error) {
+    return error
+  }
+
 }

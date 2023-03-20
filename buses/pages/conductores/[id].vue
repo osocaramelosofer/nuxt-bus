@@ -1,16 +1,19 @@
 
 
 <template v-if="driver.id">
-  <div id="overlay" onclick="off()">
-    <div id="text">Overlay Text</div>
-  </div>
 
+  <div v-if="overlay" id="overlay" @:click="overlay=false">
+    <div id="text">
+      <span>Overlay Text</span>
+      <Modal />
+    </div>
+  </div>
 
   <form v-on:submit.prevent="onSubmit">
     <div class="root">
       <h2>Editar conductor</h2>
-      <p>
-        <input type="text" placeholder="Nombre" :value="$route.params.id" disabled class="bg-gray-50 px-2" />
+      <p v-if="driver">
+        <input type="text" placeholder="Nombre" :value="driver.id" disabled class="bg-gray-50 px-2" />
       </p>
       <small>El id no se puede editar.</small>
       <p>
@@ -22,50 +25,34 @@
     </div>
   </form>
 
-<!--  <template>-->
-<!--    <div class="text-center">-->
-<!--      <v-btn-->
-<!--          color="error"-->
-<!--          @click="overlay = !overlay"-->
-<!--      >-->
-<!--        Show Overlay-->
-<!--      </v-btn>-->
-
-
-<!--    </div>-->
-<!--  </template>-->
 </template>
 
 
 <script>
+import { defineAsyncComponent } from 'vue'
 import { getDriver,updateDriver } from "@/helpers/getConductor"
 
-
 export default{
+  components: {
+    Modal: defineAsyncComponent( () => import(/* webpackChunkName: "Modal"*/ "@/modules/shared/components/Modal"))
+  },
   data(){
     return{
       driver: null,
       name: '',
-      overlay: true,
+      overlay: false,
     }
-  },
-  watch: {
-    overlay (val) {
-      val && setTimeout(() => {
-        this.overlay = false
-      }, 2000)
-    },
   },
   async created() {
     const { data } = await getDriver(this.$route.params.id)
-    console.log("DATA DRIVER", data )
     this.driver = data
     this.name = this.driver.nombre
 
   },
   methods:{
-    async onSubmit(){
+    async onSubmit() {
       const resp = await updateDriver({id: this.driver.id, nombre: this.name})
+      this.overlay = true
       console.log("RESPUESTA PUT >=======()>",resp)
     }
   }
@@ -112,7 +99,7 @@ small{
 }
 #overlay {
   position: fixed;
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   top: 0;
@@ -132,5 +119,8 @@ small{
   color: white;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
+
+  background-color: white;
+  border-radius: 10px;
 }
 </style>
