@@ -6,7 +6,12 @@
     </div>
 
     <div v-else>
-      <SharedModal urlImage="copa" message="ops! parece que hubo un problema" />
+      <SharedModal
+          v-if="overlay"
+          urlImage="copa"
+          :message="message"
+          @close-modal="turnOff"
+      />
     </div>
   </div>
 </template>
@@ -21,15 +26,32 @@ export default{
   },
   data(){
     return{
-      drivers: null
+      drivers: null,
+      overlay: true,
+      message: null
     }
   },
-  async created(){
-    const { data } = await getConductores()
-    this.drivers = data
+  created(){
+    try{
+      console.log("trying")
+      getConductores()
+          .then(console.log)
+          .catch( m => this.message = m.message )
+
+    }catch (error) {
+      console.error("ERROR ¿¿¿:", error)
+    }
+    // try {
+    //   const data = await getConductores();
+    //   console.log(data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   },
   methods: {
-
+    turnOff() {
+      this.overlay = !this.overlay
+    }
   }
 }
 </script>

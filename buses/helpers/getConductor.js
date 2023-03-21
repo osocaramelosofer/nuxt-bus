@@ -2,7 +2,11 @@ import busesApi from "@/api/busesApi"
 
 
 export const getConductores = async () =>{
+  try{
     return await busesApi.get("/chofers/")
+  }catch(error) {
+    throw error
+  }
 }
 
 export const getDriver = async ( id ) => {
