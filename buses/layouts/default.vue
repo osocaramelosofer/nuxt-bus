@@ -1,6 +1,6 @@
 <template>
   <div class="father-container">
-    <nav class="flex py-4 justify-lg-space-between px-4 items-center">
+    <nav class="flex py-4 justify-between px-4 items-center">
       <div class="flex items-center">
 <!--        <span class="text-xl font-semibold text-slate-800">Super Buses Bros</span>-->
         <picture class="logo-container">
@@ -22,9 +22,9 @@
       <slot />
     </main>
 
-    <footer>
-      HTML Reference - A free reference to all HTML5 elements and attributes
-    </footer>
+<!--    <footer>-->
+<!--      HTML Reference - A free reference to all HTML5 elements and attributes-->
+<!--    </footer>-->
   </div>
 </template>
 

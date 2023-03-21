@@ -5,18 +5,33 @@
         <span class="text-2xl font-bold tracking-normal text-emerald-500">Trayectos</span>
       </nuxt-link>
     </div>
+
     <div class="item two">two</div>
     <div class="item three">
+      <img src="@/assets/brothers.png"
+           alt="mario-with-yoshi"
+           class="absolute mario-yoshi"
+      >
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
         <span class="text-2xl font-bold tracking-normal text-emerald-500">Pasajeros</span>
       </nuxt-link>
     </div>
-    <div class="item four">
+
+    <div class="item four relative">
+      <img src="@/assets/oruga.png"
+           alt="oruga"
+           class="absolute oruga"
+      >
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
         <span class="text-2xl font-bold tracking-normal text-emerald-500">Buses</span>
       </nuxt-link>
     </div>
-    <div class="item five">
+
+    <div class="item five relative">
+      <img src="@/assets/lilmario.png"
+           alt="mario-with-yoshi"
+           class="absolute mario-yoshi"
+      >
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
         <span class="text-2xl font-bold tracking-normal text-emerald-500">Conductores</span>
       </nuxt-link>
@@ -61,6 +76,15 @@ export default {};
 .item:hover span{
   color: white;
 }
+
+.oruga {
+  width: 130px;
+  right: -13px;
+}
+.mario-yoshi{
+  width: 100px;
+  right: 10px;
+}
 /* 320px, 768px, and 1200px */
 @media only screen and (min-width: 1200px) {
   .grid-container {
@@ -74,6 +98,14 @@ export default {};
   .two {
     grid-column: span 1;
     grid-row: span 2;
+  }
+  .oruga {
+    width: 192px;
+    top: 60px
+  }
+  .mario-yoshi{
+    width: 130px;
+    right: -13px;
   }
 }
 </style>
