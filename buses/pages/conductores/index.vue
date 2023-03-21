@@ -4,6 +4,10 @@
     <div v-if="drivers" class="px-10">
       <DriverTable :drivers="drivers" />
     </div>
+
+    <div v-else>
+      <SharedModal urlImage="copa" message="ops! parece que hubo un problema" />
+    </div>
   </div>
 </template>
 
@@ -17,7 +21,7 @@ export default{
   },
   data(){
     return{
-      drivers: []
+      drivers: null
     }
   },
   async created(){
