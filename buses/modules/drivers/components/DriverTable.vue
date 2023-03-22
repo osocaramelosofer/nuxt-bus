@@ -1,5 +1,5 @@
 <template>
-  <div v-if="drivers" class="flex flex-col container">
+  <div v-if="isThereAnyData" class="flex flex-col container">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-full">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
         <div class="overflow-hidden">
@@ -14,8 +14,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="border-b dark:border-neutral-500"
+            <tr
                 v-for="driver in drivers" :key="driver.id"
+                class="border-b dark:border-neutral-500"
             >
               <td class="whitespace-nowrap  px-6 py-4 font-medium">{{ driver.id }}</td>
               <td class="whitespace-nowrap  px-6 py-4">{{ driver.nombre }}</td>
@@ -55,9 +56,24 @@ export default{
   props:{},
   data(){
     return{
-      drivers: null,
+      drivers: [],
       overlay: false,
-      message: null
+      message: null,
+    }
+  },
+  computed:{
+    isThereAnyData(){
+      //this was simplifyed return this.drivers.length === 0 ? true : false
+      return this.drivers.length > 0
+    }
+  },
+  watch:{
+    drivers(){
+      this.loadDrivers()
+      if(!this.isThereAnyData){
+        this.message = "Oops parece que aun no hay datos"
+        this.overlay = true
+      }
     }
   },
   created(){
@@ -75,15 +91,14 @@ export default{
     async removeDriver(id) {
       try{
         const resp = await deleteDriver(id)
-        console.log("RESP =>",resp)
-            // .then(console.log)
-            // .catch(console.log)
+        console.log("RESP remove Driver", resp.data)
+        this.drivers = null
       }catch (err){
         console.log(err)
       }
     },
     turnOverlayOff(){
-      this.overlay = false
+      this.overlay = !this.overlay
     }
   }
 
@@ -98,6 +113,16 @@ export default{
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(11.8px);
   -webkit-backdrop-filter: blur(11.8px);
+}
+button {
+  padding: 0 15px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  color: #fff;
+  transition: 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
 }
 .edit-button {
   background-color: rgba(243, 208, 13, 0.82);

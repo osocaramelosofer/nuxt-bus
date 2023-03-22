@@ -1,5 +1,6 @@
 <template>
-  <div id="overlay">
+  <div id="overlay"
+       :style="[showModal ? 'display:block' : 'display:none']">
     <div id="text" >
       <div class="bg-stone-200 rounded-md inside-container">
         <div class="block relative image-container">
@@ -10,7 +11,8 @@
           >
           <p class="text-center text-sm font-bold">{{ message }}</p>
         </div>
-        <button class="push-button" @click="$emit('closeModal')">O k</button>
+<!--        <button class="push-button" @click="$emit('closeModal')">O k</button>-->
+        <button class="push-button" @click="toggleModal">O k</button>
       </div>
     </div>
   </div>
@@ -28,7 +30,7 @@ export default{
   },
   data(){
     return{
-
+      showModal: true,
     }
   },
   computed: {
@@ -36,6 +38,14 @@ export default{
       if(this.urlImage.startsWith("copa"))
         return copa
       return toad
+    },
+    // isShow(){
+    //   return this.overlay
+    // }
+  },
+  methods:{
+    toggleModal(){
+      this.showModal = false
     }
   }
 }
@@ -92,17 +102,12 @@ export default{
 
 }
 button {
-
   padding: 0 15px;
-
   height: 30px;
   border-radius: 15px;
   border: none;
-
   color: #fff;
-
   transition: 0.3s ease;
-
   font-family: "Poppins", sans-serif;
   font-size: 18px;
 }
@@ -120,5 +125,6 @@ button {
   box-shadow: 0 5px #407762;
   transform: translateY(4px);
 }
+
 
 </style>

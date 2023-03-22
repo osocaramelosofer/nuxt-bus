@@ -1,5 +1,16 @@
 import busesApi from "@/api/busesApi"
 
+export const addDriver = async ( driver ) => {
+  try {
+    return await busesApi.post(
+      "/chofers/",
+      {
+        "nombre": driver
+      })
+  }catch (e) {
+    throw e
+  }
+}
 
 export const getDrivers = async () =>{
   try{
@@ -28,10 +39,8 @@ export const updateDriver = async ({ id, nombre } ) => {
 
 export const deleteDriver = async ( id ) => {
   try{
-    const resp = await busesApi.delete(`/chofers/${id}/`)
-    console.log(resp)
+    return  await busesApi.delete(`/chofers/${id}/`)
   }catch(err){
-    console.log("Error en la peticion: ", err)
     throw err
   }
 }
