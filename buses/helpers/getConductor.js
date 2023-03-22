@@ -1,7 +1,7 @@
 import busesApi from "@/api/busesApi"
 
 
-export const getConductores = async () =>{
+export const getDrivers = async () =>{
   try{
     return await busesApi.get("/chofers/")
   }catch(error) {
@@ -22,7 +22,16 @@ export const updateDriver = async ({ id, nombre } ) => {
         "id": id
       })
   }catch (error) {
-    return error
+    throw error
   }
+}
 
+export const deleteDriver = async ( id ) => {
+  try{
+    const resp = await busesApi.delete(`/chofers/${id}/`)
+    console.log(resp)
+  }catch(err){
+    console.log("Error en la peticion: ", err)
+    throw err
+  }
 }

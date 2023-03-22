@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col container">
+  <div v-if="drivers" class="flex flex-col container">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-full">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
         <div class="overflow-hidden">
@@ -28,31 +28,64 @@
                 </nuxt-link>
               </td>
               <td class="whitespace-nowrap  px-6 py-4">
-                <button class="delete-button">Eliminar</button>
+                <button @click="removeDriver(driver.id)" class="delete-button">Eliminar</button>
               </td>
             </tr>
             </tbody>
           </table>
+
         </div>
       </div>
     </div>
   </div>
+  <div v-else>
+    <SharedModal
+        v-if="overlay"
+        urlImage="copa"
+        :message="message"
+        @close-modal="turnOverlayOff"
+    />
+  </div>
 </template>
 
 <script>
+import { deleteDriver, getDrivers } from "@/helpers/getConductor"
 
 export default{
-  props:{
-    drivers:{
-      type: Array,
-      required: true
-    }
-  },
+  props:{},
   data(){
     return{
-
+      drivers: null,
+      overlay: false,
+      message: null
     }
   },
+  created(){
+    this.loadDrivers()
+  },
+  methods: {
+    async loadDrivers(){
+      try{
+        const { data } = await getDrivers()
+        this.drivers = data
+      }catch (err){
+        console.log(err)
+      }
+    },
+    async removeDriver(id) {
+      try{
+        const resp = await deleteDriver(id)
+        console.log("RESP =>",resp)
+            // .then(console.log)
+            // .catch(console.log)
+      }catch (err){
+        console.log(err)
+      }
+    },
+    turnOverlayOff(){
+      this.overlay = false
+    }
+  }
 
 }
 </script>
