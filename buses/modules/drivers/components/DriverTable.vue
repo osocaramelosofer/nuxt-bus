@@ -1,16 +1,16 @@
 <template>
-  <div v-if="isThereAnyData" class="flex flex-col container">
+  <div v-if="isThereAnyData" class="flex flex-col parent-container">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-full">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
         <div class="overflow-hidden">
           <table class="min-w-full text-center text-sm font-light w-full">
             <thead
-                class="border-b bg-neutral-800 font-medium text-white dark:border-neutral-500 dark:bg-neutral-900">
+                class="border-b bg-neutral-800 font-medium  dark:border-neutral-500 dark:bg-neutral-900">
             <tr>
-              <th scope="col" class=" px-6 py-4">#</th>
-              <th scope="col" class=" px-6 py-4">Nombre</th>
-              <th scope="col" class=" px-6 py-4">Editar</th>
-              <th scope="col" class=" px-6 py-4">Eliminar</th>
+              <th scope="col" class=" px-6 py-4 text-amber-50">#</th>
+              <th scope="col" class=" px-6 py-4 text-amber-50">Nombre</th>
+              <th scope="col" class=" px-6 py-4 text-amber-50">Editar</th>
+              <th scope="col" class=" px-6 py-4 text-amber-50">Eliminar</th>
             </tr>
             </thead>
             <tbody>
@@ -106,7 +106,7 @@ export default{
 </script>
 
 <style scoped>
-.container{
+.parent-container{
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.52);
   border-radius: 16px;

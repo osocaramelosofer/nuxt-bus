@@ -8,3 +8,10 @@ export const getBuses = async() => {
   }
 }
 
+export const getBus = async( busId ) => {
+  try {
+    return await busesApi.get(`/buses/${busId}`)
+  }catch (e) {
+    throw e
+  }
+}

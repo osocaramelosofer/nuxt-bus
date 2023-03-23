@@ -22,7 +22,7 @@
            alt="oruga"
            class="absolute oruga"
       >
-      <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
+      <nuxt-link to="/buses" class="w-full h-full flex justify-center items-center">
         <span class="text-2xl font-bold tracking-normal text-emerald-500">Buses</span>
       </nuxt-link>
     </div>

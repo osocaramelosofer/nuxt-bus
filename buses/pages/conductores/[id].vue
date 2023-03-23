@@ -50,7 +50,6 @@ export default{
     async onSubmit() {
       const resp = await updateDriver({id: this.driver.id, nombre: this.name})
       this.overlay = true
-      console.log("RESPUESTA PUT >=======()>",resp)
     }
   }
 }

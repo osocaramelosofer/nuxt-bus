@@ -1,6 +1,6 @@
 <template>
   <form v-on:submit.prevent="onSubmit" class="bg-white form-container" >
-    <div class="root">
+    <div class="second-container">
       <span class="font-bold text-xl add-driver">
         Añadir Conductor
       </span>
@@ -49,7 +49,7 @@ export default {
   -webkit-backdrop-filter: blur(11.8px);
   margin-bottom: 8px;
 }
-.root{
+.second-container{
   display: flex;
   padding-block: 20px;
   justify-content: space-around;
@@ -88,7 +88,7 @@ button {
 }
 
 @media only screen and (max-width: 400px) {
-  .root{
+  .second-container{
     flex-direction: column;
     align-items: center;
     gap: 10px;
