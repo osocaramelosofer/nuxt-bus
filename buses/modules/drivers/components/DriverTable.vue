@@ -63,8 +63,10 @@ export default{
   },
   computed:{
     isThereAnyData(){
-      //this was simplifyed return this.drivers.length === 0 ? true : false
-      return this.drivers.length > 0
+      if(this.drivers){
+        //this was simplifyed return this.drivers.length === 0 ? true : false
+        return this.drivers.length > 0
+      }
     }
   },
   watch:{

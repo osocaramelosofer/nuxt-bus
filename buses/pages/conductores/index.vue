@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="px-10">
-      <h1 class="text-4xl  text-center bg-white rounded-3xl mb-2 drivers-title">Conductores</h1>
+      <h1 class="text-4xl  text-center bg-white rounded-3xl mb-2">Conductores</h1>
       <DriversAddDriver />
       <DriverTable />
     </div>

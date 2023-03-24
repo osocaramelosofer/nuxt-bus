@@ -14,7 +14,7 @@
 <!--</script>-->
 
 <template>
-  <div v-if="buses" class="flex flex-col container">
+  <div  class="flex flex-col container">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-full">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
         <div class="overflow-hidden">
@@ -48,7 +48,7 @@
                 </nuxt-link>
               </td>
               <td class="whitespace-nowrap  px-6 py-4">
-                <button @click="removeDriver(bus.id)" class="delete-button">Eliminar</button>
+                <button @click="removeBus(bus.id)" class="delete-button">Eliminar</button>
               </td>
             </tr>
             </tbody>
@@ -69,23 +69,49 @@
 </template>
 
 <script>
-import {getBuses} from "../../helpers/buses";
+import {getBuses, deleteBus } from "../../helpers/buses";
 
 export default{
   data(){
     return{
-      buses:null,
+      buses: [],
     }
   },
+  computed:{
+    isThereAnyData(){
+      if(this.buses){
+        return this.buses.length > 0
+      }
+    },
+  },
+  watch:{
+    // buses(newValue, oldValue){
+    //   if(this.isThereAnyData){
+    //     this.loadBuses()
+    //   }
+    // },
+
+  },
   created() {
-    this.getBuses()
+    this.loadBuses()
   },
   methods: {
-    async getBuses(){
+    async loadBuses(){
       try{
         const { data } = await getBuses()
         this.buses = data
+        console.log("this.buses")
         console.log(this.buses)
+      }catch (e) {
+        console.log(e)
+      }
+    },
+    async removeBus( busId ) {
+      try{
+        console.log("removing bus ")
+        await deleteBus( busId )
+        this.buses = null
+        console.log("Registro eliminado correctamente")
       }catch (e) {
         console.log(e)
       }

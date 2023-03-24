@@ -12,10 +12,10 @@
 <!--</script>-->
 
 <template>
-  <div class="bg-white w-full flex justify-center items-center flex-col">
-    <h1 class="text-center text-3xl">Detalle de bus</h1>
+  <div class=" w-full flex justify-center items-center flex-col">
+    <h1 class="text-center text-3xl font-bold bg-white rounded-3xl px-10 py-2">Detalle de bus</h1>
 
-    <form v-on:submit.prevent="onSubmit">
+    <form v-on:submit.prevent="xd">
       <div class="root">
         <h2>Editar conductor</h2>
         <p v-if="bus">
@@ -33,6 +33,13 @@
         </p>
         <small>Esta es la capacidad del autobus, y puedes editarlo.</small>
 
+        <select v-model="selectedDriver" class="w-full">
+          <option v-if="selectedDriver">Seleccina un conductor</option>
+
+          <option v-for="option in driverOptions" :value="option.id">
+            {{ option.nombre }}
+          </option>
+        </select>
         <button class="save-button">Guardar</button>
       </div>
     </form>
@@ -40,7 +47,8 @@
 </template>
 
 <script>
-import {getBus} from "../../helpers/buses";
+import {getBus, updateBus } from "../../helpers/buses";
+import { getDrivers} from "../../helpers/getConductor";
 
 export default{
   data(){
@@ -49,13 +57,20 @@ export default{
       editedBus:{
         numero_placa: null,
         capacidad: null,
-      }
+      },
+      selectedDriver: null,
+      driverOptions: [],
+    }
+  },
+  computed:{
+    noDriver(){
+      return this.selectedDriver
     }
   },
   created() {
     this.getBusDetail(this.$route.params.id)
+    this.loadDriversOptions()
   },
-
   methods:{
     async getBusDetail( busId ){
       try{
@@ -64,7 +79,30 @@ export default{
 
         this.editedBus.numero_placa = this.bus.numero_placa
         this.editedBus.capacidad = this.bus.capacidad
+
+        if(this.bus.chofer){
+          this.setCurrentDriver(this.bus.chofer.id)
+        }
       }catch (e){ throw e}
+    },
+    async loadDriversOptions(){
+      try{
+        const { data } = await getDrivers()
+        this.driverOptions = data
+      }catch (e) {
+        console.log(e)
+      }
+    },
+    setCurrentDriver(driver){
+      this.selectedDriver = driver
+    },
+    async OnSubmit(){
+      console.log("STArting   OnSubmit RESponse ===>",resp)
+      const resp = await updateBus()
+      console.log("OnSubmit RESponse ===>",resp)
+    },
+    xd(){
+      console.log("que pasa")
     }
   }
 }
@@ -76,7 +114,7 @@ export default{
   margin: 0 auto;
   background-color: #fff;
   padding: 30px;
-  margin-top: 100px;
+  margin-top: 20px;
   border-radius: 20px;
 }
 
