@@ -27,7 +27,13 @@ export const deleteBus = async( busId) => {
 
 export const addBus = async( bus ) => {
   try {
-    
+    return busesApi.post('/buses/',{
+      "numero_placa": bus.numero_placa,
+      "chofer": {
+        "nombre": bus.chofer
+      },
+      "capacidad": 10
+    })
   }catch (e) {
     
   }
@@ -37,12 +43,12 @@ export const updateBus = async( bus )=>{
   try {
     await busesApi.put(`/crear-bus`,{
       "bus":{
-        "id": 58,
-        "numero_placa": "XXXXXXX222",
-        "capacidad": 9
+        "id": bus.id,
+        "numero_placa": bus.numero_placa,
+        "capacidad": bus.capacidad
       },
       "chofer":{
-        "id": 30
+        "id": bus.choferId
       }
     })
   }catch (e) {

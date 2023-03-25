@@ -15,7 +15,7 @@
   <div class=" w-full flex justify-center items-center flex-col">
     <h1 class="text-center text-3xl font-bold bg-white rounded-3xl px-10 py-2">Detalle de bus</h1>
 
-    <form v-on:submit.prevent="xd">
+    <form v-on:submit.prevent="OnSubmit">
       <div class="root">
         <h2>Editar conductor</h2>
         <p v-if="bus">
@@ -97,8 +97,15 @@ export default{
       this.selectedDriver = driver
     },
     async OnSubmit(){
-      console.log("STArting   OnSubmit RESponse ===>",resp)
-      const resp = await updateBus()
+      console.log("STArting   OnSubmit RESponse ===>")
+      const resp = await updateBus(
+          {
+            id: this.bus.id,
+            numero_placa: this.editedBus.numero_placa,
+            capacidad: this.editedBus.capacidad,
+            choferId: this.selectedDriver
+          }
+      )
       console.log("OnSubmit RESponse ===>",resp)
     },
     xd(){

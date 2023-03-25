@@ -5,13 +5,22 @@
         Añadir Bus
       </span>
       <p>
-        <input id="inputName"
+        <input id="numero-placa"
                type="text"
-               placeholder="Introduce tu nombre aqui"
-               class="font-semibold text-neutral-600"
+               placeholder="Introduce el numero de placa del nuevo autobus"
+               class="font-semibold text-neutral-600 custom-input-form"
+               v-model.trim="numeroPlaca"
+        />
+      </p>
+      <p>
+        <input id="chofer"
+               type="text"
+               placeholder="Introduce el nombre del conductor"
+               class="font-semibold text-neutral-600 custom-input-form"
                v-model.trim="driverName"
         />
       </p>
+
       <button class="save-button">Guardar</button>
     </div>
   </form>
@@ -24,13 +33,17 @@ export default {
   data(){
     return{
       driverName: '',
+      numeroPlaca: null
     }
   },
   methods:{
     async onSubmit(){
       try {
-        const resp = await addBus( this.driverName )
-
+        const resp = await addBus({
+          numero_placa: this.numeroPlaca,
+          chofer: this.driverName
+        } )
+        console.log("Respuesta crear a un nuevo bus=>", resp)
       }catch (e) {
         console.log(e)
       }
@@ -59,7 +72,7 @@ export default {
 .add-driver{
   max-width: 200px;
 }
-#inputName {
+.custom-input-form {
   outline: none;
   border-radius: 20px;
   padding: 5px 8px;
