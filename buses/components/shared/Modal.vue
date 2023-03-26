@@ -21,6 +21,7 @@
 <script>
 import copa from '@/assets/copa.png'
 import toad from '@/assets/toad.png'
+import osomario from '@/assets/osomario.png'
 
 export default{
   props:{
@@ -37,6 +38,8 @@ export default{
     imageSrc() {
       if(this.urlImage.startsWith("copa"))
         return copa
+      if(this.urlImage.startsWith("osom"))
+        return osomario
       return toad
     },
     // isShow(){

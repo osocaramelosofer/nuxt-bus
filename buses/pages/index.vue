@@ -12,8 +12,8 @@
            alt="mario-with-yoshi"
            class="absolute mario-yoshi"
       >
-      <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
-        <span class="text-2xl font-bold tracking-normal text-emerald-500">Pasajeros</span>
+      <nuxt-link to="/destinos" class="w-full h-full flex justify-center items-center">
+        <span class="text-2xl font-bold tracking-normal text-emerald-500">Destinos</span>
       </nuxt-link>
     </div>
 
