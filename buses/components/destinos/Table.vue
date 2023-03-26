@@ -12,13 +12,9 @@ const removeDestino = async( id )=> {
   try {
     const resp = await deleteDestino(id)
     store.deleteDestino(id)
-    console.log(store.destinos)
   }catch (e) {
     console.log(e)
   }
-}
-const remove = async(id)=>{
-
 }
 
 </script>
@@ -48,7 +44,7 @@ const remove = async(id)=>{
               <td class="whitespace-nowrap  px-6 py-4">{{ destino.destino}}</td>
               <td class="whitespace-nowrap  px-6 py-4">
                 <nuxt-link
-                    :to="`/conductores/${destino.id}`"
+                    :to="`/destinos/${destino.id}`"
                     class="w-full h-full flex justify-center items-center"
                 >
                   <button class="edit-button">Editar</button>
@@ -68,26 +64,6 @@ const remove = async(id)=>{
 
 </template>
 
-<script>
-// import { deleteDriver, getDrivers } from "@/helpers/getConductor"
-// import { deleteDestino } from "../../helpers/destinos";
-//
-// export default{
-//   props:{
-//     destinos:{
-//       type: Array,
-//       required: true,
-//     }
-//   },
-//   data(){
-//     return{
-//     }
-//   },
-//   methods: {
-//
-//   }
-// }
-</script>
 
 <style scoped>
 .parent-container{

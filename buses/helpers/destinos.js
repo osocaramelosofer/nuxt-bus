@@ -16,8 +16,16 @@ export const getDestinos = async () =>{
 
 export const getDestino = async ( id ) => {
   return await busesApi.get(`/trayectos/${ id }`)
+    .then(resp => resp.data)
 }
 
 export const deleteDestino = async ( id ) =>{
   return await busesApi.delete(`/trayectos/${ id }`)
+}
+export const putDestino = async( {id, origen, destino})=> {
+  return await busesApi.put(`/trayectos/${id}/`,{
+    "origen": origen,
+    "destino": destino
+  })
+    .then(resp => resp.data )
 }

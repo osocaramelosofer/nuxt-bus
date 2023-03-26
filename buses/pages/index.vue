@@ -36,6 +36,10 @@
         <span class="text-2xl font-bold tracking-normal text-emerald-500">Conductores</span>
       </nuxt-link>
     </div>
+
+    <div>
+      asdfkahskdfhas
+    </div>
   </div>
 </template>
 
