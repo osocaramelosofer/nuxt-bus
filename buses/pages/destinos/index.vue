@@ -17,6 +17,7 @@ const store = useDestinosStore()
     />
     <SharedModal
         v-else
+        v-if="store.isLoading"
         message="No hay destinos registrados todavia, intenta agregar un nuevo destino."
         urlImage="osomario"
     />

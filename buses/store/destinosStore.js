@@ -28,9 +28,9 @@ export const useDestinosStore = defineStore('destinos', {
       this.destinos = destinos
     },
     deleteDestino(id){
-      this.destinos.findIndex(user => user.id === id)
-      if (userIndex !== -1) {
-        state.users.splice(userIndex, 1);
+      const destinoDeleted = this.destinos.findIndex(user => user.id === id)
+      if (destinoDeleted !== -1) {
+        this.destinos.splice(destinoDeleted, 1);
       }
     }
   }

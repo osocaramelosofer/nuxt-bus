@@ -13,7 +13,19 @@ const destino = ref("")
 
 
 const onSubmit = async()=> {
-
+  try {
+    store.isLoading = true
+    const data = await postDestino(origen.value, destino.value)
+    cleanForm()
+    store.destinos.push(data)
+    store.isLoading = false
+  }catch (e){
+    console.log(e)
+  }
+}
+const cleanForm= ()=> {
+  origen.value = ''
+  destino.value = ''
 }
 </script>
 
@@ -43,6 +55,10 @@ const onSubmit = async()=> {
       <button class="save-button">Guardar</button>
     </div>
   </form>
+  <SharedModal
+      v-if="store.isLoading"
+      message="El destino se ha creado correcatamente"
+  />
 </template>
 
 <style scoped>

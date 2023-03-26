@@ -1,10 +1,13 @@
 import busesApi from "~/api/busesApi";
 
-export const postDestino = async () =>{
-  return await busesApi.post('/trayectos',{
-    "origen": "origen",
-    "destino": "destino"
-  })
+export const postDestino = async (origen, destino) =>{
+  console.log(origen, destino)
+  return await busesApi.post('/trayectos/',{
+    "origen": origen,
+    "destino": destino
+  }).then(
+    response => response.data
+  )
 }
 
 export const getDestinos = async () =>{

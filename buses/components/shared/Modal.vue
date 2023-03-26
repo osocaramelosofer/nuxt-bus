@@ -11,7 +11,6 @@
           >
           <p class="text-center text-sm font-bold">{{ message }}</p>
         </div>
-<!--        <button class="push-button" @click="$emit('closeModal')">O k</button>-->
         <button class="push-button" @click="toggleModal">O k</button>
       </div>
     </div>
@@ -25,7 +24,7 @@ import osomario from '@/assets/osomario.png'
 
 export default{
   props:{
-    urlImage: { type: String, required:true, default:"toad.png" },
+    urlImage: { type: String, default:"toad.png" },
     message: { type: String }
 
   },
@@ -42,9 +41,6 @@ export default{
         return osomario
       return toad
     },
-    // isShow(){
-    //   return this.overlay
-    // }
   },
   methods:{
     toggleModal(){
