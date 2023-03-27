@@ -2,15 +2,24 @@
   <div class="grid-container">
     <div class="item one">
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
-        <span class="text-2xl font-bold tracking-normal text-emerald-500">Trayectos</span>
+        <SharedBrick width="150" height="150" />
+<!--        <span class="text-2xl font-bold tracking-normal text-emerald-500 g-font">Trayectos</span>-->
       </nuxt-link>
     </div>
 
-    <div class="item two">two</div>
+    <div class="item two relative">
+      <img src="@/assets/yoshimario.png"
+           alt="mario-with-yoshi"
+           class="absolute mario-yoshi "
+      >
+      <nuxt-link to="/viajes" class="w-full h-full flex justify-center items-center">
+        <span class="text-2xl font-bold tracking-normal text-emerald-500">Viajes</span>
+      </nuxt-link>
+    </div>
     <div class="item three">
       <img src="@/assets/brothers.png"
-           alt="mario-with-yoshi"
-           class="absolute mario-yoshi"
+           alt="mario-luigui"
+           class="absolute item-image mario-luigui"
       >
       <nuxt-link to="/destinos" class="w-full h-full flex justify-center items-center">
         <span class="text-2xl font-bold tracking-normal text-emerald-500">Destinos</span>
@@ -29,17 +38,14 @@
 
     <div class="item five relative">
       <img src="@/assets/lilmario.png"
-           alt="mario-with-yoshi"
-           class="absolute mario-yoshi"
+           alt="little-mario"
+           class="absolute item-image little-mario"
       >
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
         <span class="text-2xl font-bold tracking-normal text-emerald-500">Conductores</span>
       </nuxt-link>
     </div>
 
-    <div>
-      asdfkahskdfhas
-    </div>
   </div>
 </template>
 
@@ -85,10 +91,20 @@ export default {};
   width: 130px;
   right: -13px;
 }
-.mario-yoshi{
+.item-image{
   width: 100px;
   right: 10px;
 }
+.mario-yoshi{
+  width: 100px;
+  left: -17px;
+}
+.little-mario{
+  width: 86px;
+  right: -8px;
+  bottom: 0;
+}
+
 /* 320px, 768px, and 1200px */
 @media only screen and (min-width: 1200px) {
   .grid-container {
@@ -107,9 +123,16 @@ export default {};
     width: 192px;
     top: 60px
   }
-  .mario-yoshi{
+  .item-image{
     width: 130px;
     right: -13px;
+  }
+  .mario-yoshi{
+    bottom: -3px;
+    width: 183px;
+  }
+  .mario-luigui{
+    width: 160px;
   }
 }
 </style>

@@ -5,6 +5,7 @@
     </NuxtLayout>
   </div>
 </template>
+
 <style>
 *, html{
   font-family: Avenir, Helvetica, Arial, sans-serif;
