@@ -1,16 +1,3 @@
-<!--<script setup>-->
-<!--// importamos el store que queremos utilizar-->
-<!--import {useBusesStore} from "../../store/busesStore";-->
-
-<!--// obtenemos acceso a el-->
-<!--const store = useBusesStore()-->
-
-<!--const modify = () => store.$patch({-->
-<!--  count: store.count = 100-->
-<!--})-->
-
-<!--</script>-->
-
 <template>
   <div class=" w-full flex justify-center items-center flex-col">
     <h1 class="text-center text-3xl font-bold bg-white rounded-3xl px-10 py-2">Detalle de bus</h1>

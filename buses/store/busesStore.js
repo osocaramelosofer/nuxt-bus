@@ -23,7 +23,6 @@ export const useBusesStore = defineStore('buses', {
         this.isLoading = false
       }catch (e) {
         console.log(e)
-
       }
     },
     increment() {
