@@ -1,19 +1,24 @@
 <script setup>
 import { useViajesStore } from "../../store/viajesStore";
+import { deleteViaje } from "@/helpers/viajes"
 
 const viajeStore = useViajesStore()
 
 onMounted(()=> {
   getViajes()
-  console.log('viajes => ',viajeStore.viajes)
 })
-
-const isData = computed(() => viajeStore.viajes)
 
 const getViajes = async () => {
   await viajeStore.getViajes()
 }
+const isData = computed(() => viajeStore.viajes)
 
+const removeViaje = async(id) => {
+  try {
+    await deleteViaje(id)
+    viajeStore.deleteViaje(id)
+  }catch (e) {console.log}
+}
 
 </script>
 <template>
@@ -40,19 +45,21 @@ const getViajes = async () => {
                 v-for="viaje in viajeStore.viajes" :key="viaje.fecha_salida"
                 class="border-b dark:border-neutral-500"
             >
-<!--              <td class="whitespace-nowrap  px-6 py-4 font-medium">{{ viaje.id }}</td>-->
+              <td class="whitespace-nowrap  px-6 py-4 font-medium">{{ viaje.id }}</td>
               <td class="whitespace-nowrap  px-6 py-4">{{ viaje.fecha_llegada}}</td>
               <td class="whitespace-nowrap  px-6 py-4">{{ viaje.fecha_salida}}</td>
+              <td class="whitespace-nowrap  px-6 py-4">{{ `De: ${viaje.trayecto.origen} - ${viaje.trayecto.destino}` }}</td>
+              <td class="whitespace-nowrap  px-6 py-4">{{ `numero de placa: ${viaje.bus.numero_placa}`}}</td>
               <td class="whitespace-nowrap  px-6 py-4">
                 <nuxt-link
-                    :to="`/destinos/${viaje}`"
+                    :to="`/viajes/${viaje.id}`"
                     class="w-full h-full flex justify-center items-center"
                 >
                   <button class="edit-button">Editar</button>
                 </nuxt-link>
               </td>
               <td class="whitespace-nowrap  px-6 py-4">
-                <button @click="" class="delete-button">Eliminar</button>
+                <button @click="removeViaje(viaje.id)" class="delete-button">Eliminar</button>
               </td>
             </tr>
             </tbody>

@@ -66,36 +66,6 @@ const updateDestino = async (destino) => {
 
 </template>
 
-
-<!--<script>-->
-<!--import {defineAsyncComponent} from 'vue'-->
-<!--import {getDriver, updateDriver} from "@/helpers/getConductor"-->
-
-<!--export default {-->
-<!--  components: {-->
-<!--    Modal: defineAsyncComponent(() => import(/* webpackChunkName: "Modal"*/ "@/modules/shared/components/Modal"))-->
-<!--  },-->
-<!--  data() {-->
-<!--    return {-->
-<!--      driver: null,-->
-<!--      name: '',-->
-<!--      overlay: false,-->
-<!--    }-->
-<!--  },-->
-<!--  async created() {-->
-<!--    const {data} = await getDriver(this.$route.params.id)-->
-<!--    this.driver = data-->
-<!--    this.name = this.driver.nombre-->
-
-<!--  },-->
-<!--  methods: {-->
-<!--    async onSubmit() {-->
-<!--      const resp = await updateDriver({id: this.driver.id, nombre: this.name})-->
-<!--      this.overlay = true-->
-<!--    }-->
-<!--  }-->
-<!--}-->
-
 <!--</script>-->
 <style lang="css" scoped>
 .root {
