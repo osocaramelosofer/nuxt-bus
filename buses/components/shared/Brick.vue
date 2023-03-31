@@ -16,7 +16,7 @@
     <div class="brick-container">
       <div class="brick three" ></div>
       <div class="brick four relative flex justify-center" >
-        <span class=" text-center text-2xl tracking-normal g-font absolute">Trayectos</span>
+        <span class=" text-center text-2xl tracking-normal g-font absolute">{{ title }}</span>
       </div>
       <div class="brick five" ></div>
     </div>
@@ -32,6 +32,7 @@ export default{
   props:{
     width: { type: String, default: "200"},
     height: { type: String, default: "200"},
+    title: { type: String, default: "Isla Champinion"}
   },
   computed:{
     defaultSize(){

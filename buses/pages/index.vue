@@ -1,8 +1,8 @@
 <template>
   <div class="grid-container">
     <div class="item one">
-      <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
-        <SharedBrick width="150" height="150" />
+      <nuxt-link to="/boletos" class="w-full h-full flex justify-center items-center">
+        <SharedBrick width="150" height="150" title="viajes" />
 <!--        <span class="text-2xl font-bold tracking-normal text-emerald-500 g-font">Trayectos</span>-->
       </nuxt-link>
     </div>

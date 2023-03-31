@@ -60,9 +60,6 @@ const getBuses = async()=>{
 
     <label for="bus">Destino</label>
     <select id="trayecto" v-model="selectedDestino" class=" bg-blue-400">
-<!--      USE THIS FOR UPDATE VIEW
-        <option v-if="selectedDriver">Seleccina un conductor</option>
--->
       <option v-for="destino in destinoStore.destinos" :value="destino.id">
         {{ `${destino.origen} - ${destino.destino}` }}
       </option>

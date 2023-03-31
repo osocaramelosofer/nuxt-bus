@@ -18,7 +18,7 @@
         <span>X</span>
       </div>
     </nav>
-    <main class="my-2">
+    <main>
       <slot />
     </main>
 
@@ -34,6 +34,7 @@
   /*background-color: #f1f1f1;*/
   height: 100vh;
   width: 100%;
+
 
   background-size: cover;
   background-repeat: no-repeat;
