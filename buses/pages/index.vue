@@ -2,8 +2,9 @@
   <div class="grid-container">
     <div class="item one">
       <nuxt-link to="/boletos" class="w-full h-full flex justify-center items-center">
-        <SharedBrick width="150" height="150" title="viajes" />
-<!--        <span class="text-2xl font-bold tracking-normal text-emerald-500 g-font">Trayectos</span>-->
+        <SharedBrick width="150" height="150" title="boeltos">
+          Boletos
+        </SharedBrick>
       </nuxt-link>
     </div>
 
@@ -13,7 +14,9 @@
            class="absolute mario-yoshi "
       >
       <nuxt-link to="/viajes" class="w-full h-full flex justify-center items-center">
-        <span class="text-2xl font-bold tracking-normal text-emerald-500">Viajes</span>
+        <SharedBrick width="150" height="150" title="Trayectos">
+          Viajes
+        </SharedBrick>
       </nuxt-link>
     </div>
     <div class="item three">
@@ -22,17 +25,21 @@
            class="absolute item-image mario-luigui"
       >
       <nuxt-link to="/destinos" class="w-full h-full flex justify-center items-center">
-        <span class="text-2xl font-bold tracking-normal text-emerald-500">Destinos</span>
+        <SharedBrick width="150" height="150" title="destinos">
+          Destinos
+        </SharedBrick>
       </nuxt-link>
     </div>
 
     <div class="item four relative">
       <img src="@/assets/oruga.png"
            alt="oruga"
-           class="absolute oruga"
+           class="absolute oruga z-10"
       >
       <nuxt-link to="/buses" class="w-full h-full flex justify-center items-center">
-        <span class="text-2xl font-bold tracking-normal text-emerald-500">Buses</span>
+        <SharedBrick width="150" height="150" title="Buses">
+          Buses
+        </SharedBrick>
       </nuxt-link>
     </div>
 
@@ -42,7 +49,9 @@
            class="absolute item-image little-mario"
       >
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
-        <span class="text-2xl font-bold tracking-normal text-emerald-500">Conductores</span>
+        <SharedBrick width="150" height="150" title="conductores">
+          Conductores
+        </SharedBrick>
       </nuxt-link>
     </div>
 

@@ -1,10 +1,9 @@
 <template>
-<!--  :style="defaultSize"-->
   <div class="block">
     <div class="item-container">
       <img
           class="item"
-          src="https://lh3.googleusercontent.com/EQ8s0yKNiLmc8wwYL_Lcpyyw182FsFVaw61rN9-HgAp1dLojFi_6AtuiQzX6in0lgpUCgna5jOwbC5Lp1BZW9Q=s400" alt="item"
+          :src="images[randomImage]" alt="item"
       />
     </div>
 
@@ -16,7 +15,9 @@
     <div class="brick-container">
       <div class="brick three" ></div>
       <div class="brick four relative flex justify-center" >
-        <span class=" text-center text-2xl tracking-normal g-font absolute">{{ title }}</span>
+        <span class=" text-center text-xl md:text-2xl tracking-normal g-font absolute">
+          <slot></slot>
+        </span>
       </div>
       <div class="brick five" ></div>
     </div>
@@ -28,24 +29,19 @@
   </div>
 </template>
 <script>
+import hongo from '@/assets/hongo.png'
+import coin from '@/assets/coin.png'
+
 export default{
-  props:{
-    width: { type: String, default: "200"},
-    height: { type: String, default: "200"},
-    title: { type: String, default: "Isla Champinion"}
+
+  data(){
+    return{
+      images: [ hongo, coin],
+    }
   },
   computed:{
-    defaultSize(){
-      if(this.width && this.height){
-        return {
-          width: `${this.width}px`,
-          height: `${this.height}px`
-        }
-      }
-      return {
-        width: `100px`,
-        height: `100px`
-      }
+    randomImage(){
+      return Math.floor(Math.random() * this.images.length);
     }
   },
   return(){},
@@ -108,11 +104,11 @@ export default{
 .item{
   position: absolute;
   width: 120px;
-  height: 90px;
+  height: 45px;
   transition: all 0.8s;
 }
 .block:hover .item{
-  transform: translateY(-100px);
+  transform: translateY(-55px);
 }
 @media only screen and (min-width: 1200px) {
   .block{
