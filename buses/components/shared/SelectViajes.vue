@@ -27,7 +27,6 @@ const computedOptions = computed(() => {
 const loadViajes = async() => await store.getViajes()
 
 const handleUpdateValue = (value, option) => {
-  // console.log("value y option", value, option)
   emit('onSelected', option)
 }
 </script>
@@ -35,22 +34,23 @@ const handleUpdateValue = (value, option) => {
 <template>
   <div>
 
-    <select
-        v-if="store.viajes"
-        id="viaje"
-        v-model="selectedViaje"
-        class=" bg-blue-400"
-        @change="$emit('onViajeSelected', selectedViaje)"
-    >
-      <option v-for="viaje in store.viajes" :value="viaje">
-        {{ `${viaje.trayecto.origen} - ${viaje.trayecto.destino}` }}
-      </option>
-    </select>
+<!--    <select-->
+<!--        v-if="store.viajes"-->
+<!--        id="viaje"-->
+<!--        v-model="selectedViaje"-->
+<!--        class=" bg-blue-400"-->
+<!--        @change="$emit('onViajeSelected', selectedViaje)"-->
+<!--    >-->
+<!--      <option v-for="viaje in store.viajes" :value="viaje">-->
+<!--        {{ `${viaje.trayecto.origen} - ${viaje.trayecto.destino}` }}-->
+<!--      </option>-->
+<!--    </select>-->
 
     <n-select
         v-model:value="selectedViaje"
         :options="computedOptions"
         @update:value="handleUpdateValue"
+        filterable
     />
 
   </div>
