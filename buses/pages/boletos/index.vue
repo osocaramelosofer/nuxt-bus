@@ -11,11 +11,10 @@ const passengerName = ref(null)
 
 
 const onViajeSelected = async(viaje)=> {
-  console.log("Viaje", viaje.id)
+  console.log("trip ",viaje)
   selectedBus.value = viaje.bus.id
   selectedViaje.value = viaje.id
-  const resp = await loadAsientos(selectedBus.value)
-  console.log(resp)
+  await loadAsientos(selectedBus.value)
 }
 const loadAsientos= async(busId)=>{
   try{
@@ -26,6 +25,7 @@ const loadAsientos= async(busId)=>{
   }
 }
 const onSeatSelected = (seatSelected) => {
+  console.log("asiento", seatSelected)
   selectedSeat.value = seatSelected
 }
 
@@ -43,12 +43,14 @@ const setPassengerName = (passenger) =>{
         @on-typing="setPassengerName"
     />
     <form>
-      <SharedSelectViajes @select-event="(viaje)=>onViajeSelected(viaje)"/>
+      <SharedSelectViajes
+          @on-viaje-selected="( viaje ) => onViajeSelected( viaje )"
+      />
       <AsientosLoadAsientos
           v-if="asientos"
           :asientos="asientos"
           :selectedSeat="selectedSeat"
-          @some-event="onSeatSelected"
+          @on-seat-selected="onSeatSelected"
       />
     </form>
 

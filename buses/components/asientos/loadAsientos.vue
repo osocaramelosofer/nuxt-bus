@@ -1,4 +1,7 @@
 <script setup>
+
+const emit = defineEmits(['onSeatSelected'])
+
 const props = defineProps({
   asientos: { type: Array, default:[]},
   selectedSeat: {type: Number},
@@ -27,7 +30,7 @@ const sortedSeats = computed(() => {
           :key="index"
           class="seat"
           :class="{'ocupado': asiento.estado === 'ocupado', 'libre': asiento.estado === 'disponible'}"
-          @click="$emit('someEvent', asiento.numero)"
+          @click="$emit('onSeatSelected', asiento.numero)"
           tabindex="0"
       >
         <span class="g-font">{{ asiento.numero }}</span>
