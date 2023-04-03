@@ -33,6 +33,14 @@ const setPassengerName = (passenger) =>{
   passengerName.value = passenger.value
   console.log("Name ",passengerName.value)
 }
+
+const xd = (viaje) =>{
+  console.log("Bus ID => ",viaje.bus)
+  console.log("Viaje ID =>",viaje.viaje)
+
+  selectedBus.value = viaje.bus
+  selectedViaje.value = viaje.viaje
+}
 </script>
 
 <template>
@@ -45,6 +53,7 @@ const setPassengerName = (passenger) =>{
     <form>
       <SharedSelectViajes
           @on-viaje-selected="( viaje ) => onViajeSelected( viaje )"
+          @on-selected="xd"
       />
       <AsientosLoadAsientos
           v-if="asientos"

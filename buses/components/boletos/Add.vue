@@ -31,9 +31,6 @@ function onTypingEmit(){
                @keyup="onTypingEmit"
       />
     </div>
-    <n-button @click.prevent="onSubmit">
-      Enviar
-    </n-button>
   </form>
 </template>
 
