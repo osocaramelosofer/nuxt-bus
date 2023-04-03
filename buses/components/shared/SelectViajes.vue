@@ -7,12 +7,9 @@ const selectedViaje = ref(null)
 
 onMounted(()=>{
   loadViajes()
-
 })
 
-const loadViajes = async()=> {
-  await store.getViajes()
-}
+const loadViajes = async() => await store.getViajes()
 
 </script>
 
