@@ -9,7 +9,9 @@
               alt="toad.png"
               class="w-full h-full object-contain image"
           >
-          <p class="text-center text-sm font-bold">{{ message }}</p>
+          <p class="text-center text-sm font-bold">
+            <slot />
+          </p>
         </div>
         <button class="push-button" @click="toggleModal">O k</button>
       </div>
@@ -25,8 +27,7 @@ import osomario from '@/assets/osomario.png'
 export default{
   props:{
     urlImage: { type: String, default:"toad.png" },
-    message: { type: String }
-
+    onClick: { type: Function  },
   },
   data(){
     return{
@@ -45,10 +46,14 @@ export default{
   methods:{
     toggleModal(){
       this.showModal = false
+      if(this.onClick){
+        this.onClick()
+      }
     }
   }
 }
 </script>
+
 <style scoped>
 #overlay {
   position: fixed;

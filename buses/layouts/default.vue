@@ -45,11 +45,8 @@ const onPlay = () => {
 <style>
 .father-container {
    background-image: url("@/assets/busesbros.jpg");
-  /*background-color: #f1f1f1;*/
   height: 100vh;
   width: 100%;
-
-
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

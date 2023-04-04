@@ -3,15 +3,17 @@ import {ref} from "vue";
 import {getAsientos} from "../../helpers/asientos";
 import {postBoleto} from "../../helpers/boletos";
 import {postPasajero} from "../../helpers/pasajeros";
-import {NButton} from "naive-ui";
 import CustomButton from "../../components/shared/CustomButton";
+
+
+const router = useRouter();
 
 const selectedBus = ref(0)
 const asientos = ref([])
 const selectedSeat = ref(0)
 const selectedViaje = ref(0)
 const passengerName = ref(null)
-
+const messageResponse = ref(null)
 
 const onViajeSelected = async (viaje) => {
   selectedBus.value = viaje.bus
@@ -51,21 +53,24 @@ const addBoleto = async () => {
       },
       "corrida": selectedViaje.value
     }
-    const resp = await postBoleto(boleto)
-    console.log("Si se pudo ?", resp)
+    const {data} = await postBoleto(boleto)
+    messageResponse.value = data.message
   } catch (e) {
     console.log(e)
   }
 }
-//TODO:
-// tenemos que mandar el id del pasajero (quien ya se debio de haber creado) para poder anadir un boleto: DONE
-// si ya no hay asientos disponibles no mostrar el autobus
-//
+
+function goHome(){
+  router.push({ path: "/" });
+}
 </script>
 
 <template>
   <div>
-    <h1>boleto</h1>
+    <SharedModal v-if="messageResponse" urlImage="osomario" :onClick="goHome">
+      {{ messageResponse}}
+    </SharedModal>
+    <h1 class="text-white text-3xl p-10">boleto</h1>
 
     <div class="form-container px-16 flex flex-col justify-center items-center gap-5 py-10 mx-10">
       <BoletosAdd
