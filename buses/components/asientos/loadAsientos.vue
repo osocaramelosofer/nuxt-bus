@@ -13,18 +13,18 @@ const sortedSeats = computed(() => {
 
 </script>
 <template>
-  <div class="w-full bg-white flex gap-3 p-3 flex flex-col">
-    <h2 class="g-font text-center text-3xl">Selecciona tu asiento</h2>
-    <div class="flex gap-5">
-      <small class="font-bold">libre</small>
-      <div class="seats-example libre"></div>
+  <div v-if="sortedSeats" class="bg-white seats-container rounded-3xl">
+    <div class="w-full bg-white gap-3 p-3 flex flex-col rounded-3xl">
+      <h2 class="g-font text-center text-3xl">Selecciona tu asiento</h2>
+      <div class="flex gap-5">
+        <small class="font-bold">libre</small>
+        <div class="seats-example libre"></div>
 
-      <small class="font-bold">ocupado</small>
-      <div class="seats-example ocupado"></div>
+        <small class="font-bold">ocupado</small>
+        <div class="seats-example ocupado"></div>
+      </div>
     </div>
-  </div>
-  <div v-if="sortedSeats" class="bg-white">
-    <ul class="bus-container">
+    <ul class="bus-container rounded-3xl">
       <li
           v-for="(asiento, index) in sortedSeats"
           :key="index"
@@ -40,6 +40,9 @@ const sortedSeats = computed(() => {
 </template>
 
 <style>
+.seats-container{
+  align-self: normal;
+}
 .bus-container{
   background-color: white;
   display: flex;

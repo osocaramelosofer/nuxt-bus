@@ -1,41 +1,38 @@
 <script setup>
 import {ref} from 'vue'
 import {postPasajero} from "../../helpers/pasajeros";
-import { NButton, NInput } from 'naive-ui'
+import {NButton, NInput} from 'naive-ui'
 
 const emit = defineEmits(['onTyping'])
 
 const props = defineProps({
-  passenger:{type: String || Object },
+  passenger: {type: String || Object},
 })
 
 const name = ref(null)
 
-const onSubmit = async()=> {
+const onSubmit = async () => {
   const resp = await postPasajero(name.value)
   console.log(resp)
 }
 
-function onTypingEmit(){
+function onTypingEmit() {
   emit('onTyping', name)
 }
 </script>
 
 <template>
-  <form v-on:submit.prevent="test"
-        class="cristal flex flex-col justify-center items-center">
-    <div class="flex flex-col border-blue-400">
-      <n-input size="large" round
-               placeholder="Nombre del pasajero"
-               v-model:value="name"
-               @keyup="onTypingEmit"
-      />
-    </div>
-  </form>
+
+  <n-input size="large" round
+           placeholder="Nombre del pasajero"
+           v-model:value="name"
+           @keyup="onTypingEmit"
+  />
+
 </template>
 
 <style>
-.cristal{
+.cristal {
   border-radius: 10px;
 
   background: rgba(255, 255, 255, 0.15);

@@ -2,7 +2,7 @@
   <div class="grid-container">
     <div class="item one">
       <nuxt-link to="/boletos" class="w-full h-full flex justify-center items-center">
-        <SharedBrick width="150" height="150" title="boeltos">
+        <SharedBrick title="boletos">
           Boletos
         </SharedBrick>
       </nuxt-link>
@@ -14,7 +14,7 @@
            class="absolute mario-yoshi "
       >
       <nuxt-link to="/viajes" class="w-full h-full flex justify-center items-center">
-        <SharedBrick width="150" height="150" title="Trayectos">
+        <SharedBrick title="Trayectos">
           Viajes
         </SharedBrick>
       </nuxt-link>
@@ -25,7 +25,7 @@
            class="absolute item-image mario-luigui"
       >
       <nuxt-link to="/destinos" class="w-full h-full flex justify-center items-center">
-        <SharedBrick width="150" height="150" title="destinos">
+        <SharedBrick  title="destinos">
           Destinos
         </SharedBrick>
       </nuxt-link>
@@ -37,7 +37,7 @@
            class="absolute oruga z-10"
       >
       <nuxt-link to="/buses" class="w-full h-full flex justify-center items-center">
-        <SharedBrick width="150" height="150" title="Buses">
+        <SharedBrick title="Buses">
           Buses
         </SharedBrick>
       </nuxt-link>
@@ -49,7 +49,7 @@
            class="absolute item-image little-mario"
       >
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
-        <SharedBrick width="150" height="150" title="conductores">
+        <SharedBrick title="conductores">
           Conductores
         </SharedBrick>
       </nuxt-link>
