@@ -1,6 +1,40 @@
+<script setup>
+import bienvenida from '@/assets/bienvenida.mp3'
+
+
+let audio
+let something = false
+
+onMounted(async () => {
+  console.log("mounted")
+  audio.play()
+  await setTimeout(() => {
+    onPlay()
+  }, '1000')
+})
+onBeforeMount(() => {
+  console.log("on before mount")
+  audio = new Audio(bienvenida)
+  // audio.src = bienvenida
+})
+
+
+const onPlay = () => {
+  if (audio.readyState >= 2) {
+    audio.play()
+  }
+}
+
+
+</script>
+
 <template>
+  <SharedModal @click="onPlay"></SharedModal>
   <div class="grid-container">
     <div class="item one">
+      <button class="bg-blue-500 p-10" @click="onPlay">
+        sound on
+      </button>
       <nuxt-link to="/boletos" class="w-full h-full flex justify-center items-center">
         <SharedBrick title="boletos">
           Boletos
@@ -25,7 +59,7 @@
            class="absolute item-image mario-luigui"
       >
       <nuxt-link to="/destinos" class="w-full h-full flex justify-center items-center">
-        <SharedBrick  title="destinos">
+        <SharedBrick title="destinos">
           Destinos
         </SharedBrick>
       </nuxt-link>
@@ -58,9 +92,6 @@
   </div>
 </template>
 
-<script>
-export default {};
-</script>
 
 <style scoped>
 .grid-container {
@@ -77,6 +108,7 @@ export default {};
   grid-gap: 25px;
   align-content: center;
 }
+
 .item {
   border-radius: 10px;
 
@@ -86,13 +118,15 @@ export default {};
   backdrop-filter: blur(3.2px);
   -webkit-backdrop-filter: blur(3.2px);
 }
-.item:hover{
+
+.item:hover {
   /*background-color: #01d77ed0;*/
   background-color: #01d77ed0;
   cursor: pointer;
   color: white;
 }
-.item:hover span{
+
+.item:hover span {
   color: white;
 }
 
@@ -100,15 +134,18 @@ export default {};
   width: 130px;
   right: -13px;
 }
-.item-image{
+
+.item-image {
   width: 100px;
   right: 10px;
 }
-.mario-yoshi{
+
+.mario-yoshi {
   width: 100px;
   left: -17px;
 }
-.little-mario{
+
+.little-mario {
   width: 86px;
   right: -8px;
   bottom: 0;
@@ -120,27 +157,33 @@ export default {};
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 200px);
   }
+
   .one {
     grid-column: span 2;
     grid-row: 1/3;
   }
+
   .two {
     grid-column: span 1;
     grid-row: span 2;
   }
+
   .oruga {
     width: 192px;
     top: 60px
   }
-  .item-image{
+
+  .item-image {
     width: 130px;
     right: -13px;
   }
-  .mario-yoshi{
+
+  .mario-yoshi {
     bottom: -3px;
     width: 183px;
   }
-  .mario-luigui{
+
+  .mario-luigui {
     width: 160px;
   }
 }
