@@ -1,30 +1,5 @@
 <script setup>
-import bienvenida from '@/assets/bienvenida.mp3'
-
-
-let audio
-let something = false
-
-onMounted(async () => {
-  console.log("mounted")
-  audio.play()
-  await setTimeout(() => {
-    onPlay()
-  }, '1000')
-})
-onBeforeMount(() => {
-  console.log("on before mount")
-  audio = new Audio(bienvenida)
-  // audio.src = bienvenida
-})
-
-
-const onPlay = () => {
-  if (audio.readyState >= 2) {
-    audio.play()
-  }
-}
-
+import onPlay from '@/helpers/playSound'
 
 </script>
 
@@ -32,9 +7,6 @@ const onPlay = () => {
   <SharedModal @click="onPlay"></SharedModal>
   <div class="grid-container">
     <div class="item one">
-      <button class="bg-blue-500 p-10" @click="onPlay">
-        sound on
-      </button>
       <nuxt-link to="/boletos" class="w-full h-full flex justify-center items-center">
         <SharedBrick title="boletos">
           Boletos

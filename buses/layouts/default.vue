@@ -1,9 +1,16 @@
+<script setup>
+import onPlay from '@/helpers/playSound'
+
+</script>
+
 <template>
   <div class="father-container">
     <nav class="flex py-4 justify-between px-4 items-center">
       <div class="flex items-center">
-<!--        <span class="text-xl font-semibold text-slate-800">Super Buses Bros</span>-->
-        <picture class="logo-container">
+        <picture
+            @click="onPlay"
+            class="logo-container cursor-pointer"
+        >
           <img class="logo" src="@/assets/logo.png" alt="logo">
         </picture>
         <picture class="img-container">
@@ -21,10 +28,6 @@
     <main>
       <slot />
     </main>
-
-<!--    <footer>-->
-<!--      HTML Reference - A free reference to all HTML5 elements and attributes-->
-<!--    </footer>-->
   </div>
 </template>
 
