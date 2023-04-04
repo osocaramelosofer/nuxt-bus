@@ -1,10 +1,20 @@
 <script setup>
-import onPlay from '@/helpers/playSound'
+import bienvenida from '@/assets/bienvenida.mp3'
 
+let audio
+
+onMounted(async () => {
+  audio = new Audio(bienvenida)
+})
+
+const onPlay = () => {
+  if (audio.readyState >= 2) {
+    audio.play()
+  }
+}
 </script>
 
 <template>
-  <SharedModal @click="onPlay"></SharedModal>
   <div class="grid-container">
     <div class="item one">
       <nuxt-link to="/boletos" class="w-full h-full flex justify-center items-center">

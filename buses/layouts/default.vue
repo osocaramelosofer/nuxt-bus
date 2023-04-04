@@ -1,6 +1,17 @@
 <script setup>
-import onPlay from '@/helpers/playSound'
+import bienvenida from '@/assets/bienvenida.mp3'
 
+let audio
+
+onMounted(async () => {
+  audio = new Audio(bienvenida)
+})
+
+const onPlay = () => {
+  if (audio.readyState >= 2) {
+    audio.play()
+  }
+}
 </script>
 
 <template>
