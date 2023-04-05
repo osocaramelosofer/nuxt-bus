@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  // target: 'static',
   app: {
     head: {
       charset: 'utf-8',
@@ -32,5 +33,6 @@ export default defineNuxtConfig({
       'process.env.DEBUG': false,
     },
   },
-
+  tailwindcss: {
+  }
 })

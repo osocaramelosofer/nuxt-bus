@@ -1,5 +1,7 @@
 <script setup>
 import bienvenida from '@/assets/bienvenida.mp3'
+import SwitcherMode from "../components/shared/SwitcherMode";
+
 
 let audio
 
@@ -15,7 +17,7 @@ const onPlay = () => {
 </script>
 
 <template>
-  <div class="father-container">
+  <div class="bg-red-400 dark:bg-blue-500">
     <nav class="flex py-4 justify-between px-4 items-center">
       <div class="flex items-center">
         <picture
@@ -29,20 +31,27 @@ const onPlay = () => {
         </picture>
       </div>
       <div>
-        <nuxt-link to="/">Home</nuxt-link>
-        <nuxt-link to="/">Blog</nuxt-link>
+        <nuxt-link class=" dark:bg-black dark:text-white" to="/">Home</nuxt-link>
+        <nuxt-link to="/boletos">boletos</nuxt-link>
       </div>
       <div>
-        <span>X</span>
+        <SharedSwitcherMode />
       </div>
     </nav>
-    <main>
+    <main class="dark:bg-dark">
       <slot />
     </main>
   </div>
 </template>
 
 <style>
+.bg-dark {
+  background: rgba(40, 40, 40, 0.91);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.6px);
+  -webkit-backdrop-filter: blur(15.6px);
+}
 .father-container {
    background-image: url("@/assets/busesbros.jpg");
   height: 100vh;
