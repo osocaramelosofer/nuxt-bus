@@ -115,7 +115,7 @@ const menuOptions = [
 <template>
   <n-space vertical>
 
-    <n-layout has-sider class="">
+    <n-layout has-sider class="h-screen">
       <n-layout-sider
           bordered
           collapse-mode="width"
@@ -123,10 +123,11 @@ const menuOptions = [
           :width="240"
           show-trigger
           :inverted="isDark"
-          class="h-screen"
+          class="dark:bg-stone-900 bg-neutral-100"
       >
 
-        <SharedSwitcherMode/>
+        <SharedSwitcherMode class="ml-2 mt-2"/>
+
         <n-menu
             :inverted="isDark"
             :collapsed-width="64"
@@ -151,11 +152,11 @@ const menuOptions = [
                 <img class="goomba-ico" src="@/assets/goomba.png" alt="goomba"/>
               </picture>
             </div>
-            <div class="flex xl:gap-5">
-              <nuxt-link :to="`/`" class=" dark:bg-black dark:text-white menu-item-font">Home</nuxt-link>
+            <div class="hidden xl:gap-5 xl:flex">
+              <nuxt-link :to="`/`" class="  dark:text-white menu-item-font">Home</nuxt-link>
               <template v-for="(item,index) in menuItems" :key="index">
                 <nuxt-link :to="`/${item}`"
-                           class=" dark:bg-black dark:text-white menu-item-font"
+                           class=" dark:text-white menu-item-font"
                 >
                   {{ item }}
                 </nuxt-link>
@@ -165,8 +166,10 @@ const menuOptions = [
               <SharedSwitcherMode/>
             </div>
           </nav>
-          <main class="dark:bg-dark xl:pt-10">
-            <slot/>
+          <main class="dark:bg-dark">
+            <SharedWrapper>
+              <slot/>
+            </SharedWrapper>
           </main>
         </div>
       </n-layout>

@@ -76,7 +76,7 @@ const onPlay = () => {
   width: 100%;
   height: 100%;
   grid-template-rows: repeat(3, 100px);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
 
   /*
   grid-auto-rows: minmax(100px, auto); Esto se para cuando se defina automaticamente una row extra ponerle el tamano establecido por defecto  */
@@ -129,6 +129,18 @@ const onPlay = () => {
 }
 
 /* 320px, 768px, and 1200px */
+@media only screen and (max-width: 375px) {
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 25px;
+    align-content: center;
+  }
+  .item{
+    height: 75px;
+  }
+}
+
 @media only screen and (min-width: 1200px) {
   .grid-container {
     grid-template-columns: repeat(3, 1fr);
