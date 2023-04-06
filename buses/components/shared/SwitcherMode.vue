@@ -10,10 +10,10 @@ const toggleDark = useToggle(isDark)
 <template>
   <n-switch @update:value="toggleDark" size="large">
     <template #checked-icon>
-      <n-icon :component="Sunny" />
+      <n-icon :component="Moon" />
     </template>
     <template #unchecked-icon>
-      <n-icon :component="Moon" />
+      <n-icon :component="Sunny" />
     </template>
   </n-switch>
 </template>

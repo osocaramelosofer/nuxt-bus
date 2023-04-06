@@ -84,7 +84,7 @@ export default{
 .g-font{
   font-family: 'Paytone One', sans-serif;
   letter-spacing: .5rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.68);
   transition: all 0.3s;
 }
 .block:hover .g-font{
@@ -147,7 +147,6 @@ export default{
   .g-font{
     font-family: 'Paytone One', sans-serif;
     letter-spacing: .5rem;
-    color: rgba(255, 255, 255, 0.35);
     transition: all 0.3s;
   }
   .block:hover .g-font{

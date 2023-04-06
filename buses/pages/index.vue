@@ -18,7 +18,7 @@ const onPlay = () => {
   <div class="grid-container">
     <div class="item one">
       <nuxt-link to="/boletos" class="w-full h-full flex justify-center items-center">
-        <SharedBrick title="boletos">
+        <SharedBrick>
           Boletos
         </SharedBrick>
       </nuxt-link>
@@ -30,7 +30,7 @@ const onPlay = () => {
            class="absolute mario-yoshi "
       >
       <nuxt-link to="/viajes" class="w-full h-full flex justify-center items-center">
-        <SharedBrick title="Trayectos">
+        <SharedBrick>
           Viajes
         </SharedBrick>
       </nuxt-link>
@@ -41,7 +41,7 @@ const onPlay = () => {
            class="absolute item-image mario-luigui"
       >
       <nuxt-link to="/destinos" class="w-full h-full flex justify-center items-center">
-        <SharedBrick title="destinos">
+        <SharedBrick>
           Destinos
         </SharedBrick>
       </nuxt-link>
@@ -53,7 +53,7 @@ const onPlay = () => {
            class="absolute oruga z-10"
       >
       <nuxt-link to="/buses" class="w-full h-full flex justify-center items-center">
-        <SharedBrick title="Buses">
+        <SharedBrick>
           Buses
         </SharedBrick>
       </nuxt-link>
@@ -65,7 +65,7 @@ const onPlay = () => {
            class="absolute item-image little-mario"
       >
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
-        <SharedBrick title="conductores">
+        <SharedBrick>
           Conductores
         </SharedBrick>
       </nuxt-link>

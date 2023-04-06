@@ -1,9 +1,16 @@
+<script setup>
+import { NLoadingBarProvider } from 'naive-ui'
+
+</script>
 <template>
-  <div class="init">
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <n-loading-bar-provider>
+    <div class="init">
+      <NuxtLayout>
+        <NuxtPage/>
+      </NuxtLayout>
+    </div>
+  </n-loading-bar-provider>
+
 </template>
 
 <style>
