@@ -2,7 +2,7 @@
 import bienvenida from '@/assets/bienvenida.mp3'
 
 let audio
-
+const isDark = useDark()
 onMounted(async () => {
   audio = new Audio(bienvenida)
 })
@@ -18,9 +18,8 @@ const onPlay = () => {
   <div class="grid-container">
     <div class="item one">
       <nuxt-link to="/boletos" class="w-full h-full flex justify-center items-center">
-        <SharedBrick>
-          Boletos
-        </SharedBrick>
+        <SharedQuestionBrick v-if="isDark">Boletos</SharedQuestionBrick>
+        <SharedBrick v-else>Boletos</SharedBrick>
       </nuxt-link>
     </div>
 
@@ -30,9 +29,8 @@ const onPlay = () => {
            class="absolute mario-yoshi "
       >
       <nuxt-link to="/viajes" class="w-full h-full flex justify-center items-center">
-        <SharedBrick>
-          Viajes
-        </SharedBrick>
+        <SharedQuestionBrick v-if="isDark">Viajes</SharedQuestionBrick>
+        <SharedBrick v-else>Viajes</SharedBrick>
       </nuxt-link>
     </div>
     <div class="item three">
@@ -41,9 +39,8 @@ const onPlay = () => {
            class="absolute item-image mario-luigui"
       >
       <nuxt-link to="/destinos" class="w-full h-full flex justify-center items-center">
-        <SharedBrick>
-          Destinos
-        </SharedBrick>
+        <SharedQuestionBrick v-if="isDark">Destinos</SharedQuestionBrick>
+        <SharedBrick v-else>Destinos</SharedBrick>
       </nuxt-link>
     </div>
 
@@ -53,9 +50,8 @@ const onPlay = () => {
            class="absolute oruga z-10"
       >
       <nuxt-link to="/buses" class="w-full h-full flex justify-center items-center">
-        <SharedBrick>
-          Buses
-        </SharedBrick>
+        <SharedQuestionBrick v-if="isDark">Buses</SharedQuestionBrick>
+        <SharedBrick v-else>Buses</SharedBrick>
       </nuxt-link>
     </div>
 
@@ -65,9 +61,8 @@ const onPlay = () => {
            class="absolute item-image little-mario"
       >
       <nuxt-link to="/conductores" class="w-full h-full flex justify-center items-center">
-        <SharedBrick>
-          Conductores
-        </SharedBrick>
+        <SharedQuestionBrick v-if="isDark">Conductores</SharedQuestionBrick>
+        <SharedBrick v-else>Conductores</SharedBrick>
       </nuxt-link>
     </div>
 
@@ -80,7 +75,7 @@ const onPlay = () => {
   display: grid;
   width: 100%;
   height: 100%;
-  grid-template-rows: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   /*
@@ -137,7 +132,7 @@ const onPlay = () => {
 @media only screen and (min-width: 1200px) {
   .grid-container {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 200px);
+    grid-template-rows: repeat(3, 200px);
   }
 
   .one {
